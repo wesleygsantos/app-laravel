@@ -1,6 +1,4 @@
 
-# Setup Docker Laravel 10 com PHP 8.1
-[Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
 
 ### Passo a passo
 ```sh
@@ -16,7 +14,7 @@ cp .env.example .env
 
 Atualize as variáveis de ambiente do arquivo .env
 ```dosini
-APP_NAME="Especializa Ti"
+APP_NAME="APP LARAVEL"
 APP_URL=http://localhost:8989
 
 DB_CONNECTION=mysql
