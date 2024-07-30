@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $data = $request->all();
+        $data = $request->validated();
 
         if($request->password)
             $data['password'] = bcrypt($request->password);
@@ -45,6 +45,14 @@ class UserController extends Controller
         $user->update($data);
 
         return new UserResource($user);
+    }
+
+    public function destroy(string $id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return response()->json([], 204);
     }
 
 }

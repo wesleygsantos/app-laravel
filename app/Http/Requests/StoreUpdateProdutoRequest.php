@@ -3,16 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class StoreUpdateUserRequest extends FormRequest
+class StoreUpdateProdutoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,50 +21,40 @@ class StoreUpdateUserRequest extends FormRequest
      */
     public function rules(): array
     {
+
         $rules = [
             'name' => [
                 'required',
                 'min:3',
-                'max:255'
-            ],
-            'email' => [
-                'required',
-                'email',
                 'max:255',
-                'unique:users'
+                'unique:produtos'
             ],
-            'password' => [
+            'valor' => [
                 'required',
-                'min:6',
-                'max:50',
+            ],
+            'id_marca' => [
+                'nullable',
+            ],
+            'estoque' => [
+                'nullable',
+            ],
+            'id_cidade' => [
+                'required',
             ]
         ];
 
         if($this->method() === 'PATCH'){
 
-            // $rules['email'] = [
-            //     'required',
-            //     'email',
-            //     'max:255',
-            //     Rule::unique('users')->ignore($this->email),
-            // ];
-
-            $rules['email'] = [
+            $rules['id_cidade'] = [
                 'nullable',
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore($this->email),
             ];
 
-            $rules['password'] = [
+            $rules['valor'] = [
                 'nullable',
-                'min:6',
-                'max:50',
             ];
 
         }
 
         return $rules;
-
     }
 }
