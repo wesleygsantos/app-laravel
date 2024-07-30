@@ -16,7 +16,7 @@ class MarcaResource extends JsonResource
     {
         return [
             'identify' => $this->id,
-            'nome' => strtoupper($this->name),
+            'nome' => strtoupper($this->nome),
             'fabricante' => $this->fabricante,
         ];
     }

@@ -19,7 +19,6 @@ class ProdutoController extends Controller
     public function store(StoreUpdateProdutoRequest $request)
     {
         $data = $request->validated();
-        $data['password'] = bcrypt($request->password);
 
         $produto = Produto::create($data);
 
@@ -35,12 +34,7 @@ class ProdutoController extends Controller
     public function update(StoreUpdateProdutoRequest $request, string $id)
     {
         $produto = Produto::findOrFail($id);
-
         $data = $request->validated();
-
-        if($request->password)
-            $data['password'] = bcrypt($request->password);
-
         $produto->update($data);
 
         return new ProdutosResource($produto);

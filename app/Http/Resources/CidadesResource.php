@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CidadeResource extends JsonResource
+class CidadesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,7 +16,7 @@ class CidadeResource extends JsonResource
     {
         return [
             'identify' => $this->id,
-            'nome' => strtoupper($this->name),
+            'nome' => strtoupper($this->nome),
         ];
     }
 }

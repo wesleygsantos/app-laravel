@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('nome')->unique();
             $table->float('valor');
             $table->integer('id_marca')->unsigned();
-            $table->foreign('id_marca')->references('id')->on('marca');
+            $table->foreign('id_marca')->references('id')->on('marcas');
             $table->float('estoque')->nullable();
             $table->integer('id_cidade')->unsigned();
-            $table->foreign('id_cidade')->references('id')->on('cidade');
+            $table->foreign('id_cidade')->references('id')->on('cidades');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUpdateProdutoRequest extends FormRequest
+class StoreUpdateCidadesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,39 +21,14 @@ class StoreUpdateProdutoRequest extends FormRequest
      */
     public function rules(): array
     {
-
         $rules = [
             'nome' => [
                 'required',
                 'min:3',
                 'max:255',
-                'unique:produtos'
+                'unique:cidades'
             ],
-            'valor' => [
-                'required',
-            ],
-            'id_marca' => [
-                'nullable',
-            ],
-            'estoque' => [
-                'nullable',
-            ],
-            'id_cidade' => [
-                'required',
-            ]
         ];
-
-        if($this->method() === 'PATCH' || $this->method() === 'PUT'){
-
-            $rules['id_cidade'] = [
-                'nullable',
-            ];
-
-            $rules['valor'] = [
-                'nullable',
-            ];
-
-        }
 
         return $rules;
     }
